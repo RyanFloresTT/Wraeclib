@@ -4,7 +4,7 @@ A .NET client library for interacting with the Path of Exile API. This library p
 
 ## Installation
 
-Wraeclib is available as a NuGet package. Install it using your preferred method:
+Wraeclib ***will*** be available as a NuGet package. Install it using your preferred method:
 
 ```bash
 dotnet add package Wraeclib
