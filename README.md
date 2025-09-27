@@ -19,6 +19,7 @@ Install-Package Wraeclib
 
 - .NET 9.0 or later
 - A valid User-Agent string (required by GGG's API policy)
+- An OAuth token issued by GGG (you can find more details [here](https://www.pathofexile.com/developer/docs/authorization))
 
 ## Quick Start
 
