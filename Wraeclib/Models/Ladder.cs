@@ -2,8 +2,7 @@
 
 namespace Wraeclib.Models;
 
-public class LadderEntry
-{
+public class LadderEntry {
     [JsonPropertyName("rank")]
     public int Rank { get; set; }
 
@@ -14,28 +13,25 @@ public class LadderEntry
     public LadderCharacter Character { get; set; } = null!;
 }
 
-public class LadderAccount
-{
+public class LadderAccount {
     [JsonPropertyName("name")]
     public string Name { get; set; } = null!;
-        
+
     [JsonPropertyName("id")]
     public string Id { get; set; } = null!;
 }
 
-public class LadderCharacter
-{
+public class LadderCharacter {
     [JsonPropertyName("name")]
     public string Name { get; set; } = null!;
-        
+
     [JsonPropertyName("level")]
     public int Level { get; set; }
-        
+
     [JsonPropertyName("class")]
     public string Class { get; set; } = null!;
 }
-public class LadderResponse
-{
+public class LadderResponse {
     [JsonPropertyName("total")]
     public int Total { get; set; }
 

@@ -2,20 +2,19 @@
 
 namespace Wraeclib.Models;
 
-public class League
-{
+public class League {
     /// <summary>
     /// Unique league ID (used internally by the API).
     /// </summary>
     [JsonPropertyName("id")]
     public string Id { get; set; } = null!;
-    
+
     /// <summary>
     /// Display name of the league (e.g., "Standard", "Hardcore", "Delirium").
     /// </summary>
     [JsonPropertyName("name")]
     public string Name { get; set; } = null!;
-    
+
     /// <summary>
     /// A link to the PoE Page which contains the ladder url.
     /// </summary>
