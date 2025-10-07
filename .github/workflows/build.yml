@@ -1,0 +1,49 @@
+name: Build and Publish NuGet Package
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      id-token: write  # enable GitHub OIDC token issuance for this job
+      contents: read
+    
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      # Setup .NET SDK
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'  # Change to your target version
+      
+      # Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore
+      
+      # Build the project
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      
+      # Pack the NuGet package
+      - name: Pack
+        run: dotnet pack --configuration Release --no-build --output ./artifacts
+      
+      # Get a short-lived NuGet API key
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+      
+      # Push the package
+      - name: NuGet push
+        run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ steps.login.outputs.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
