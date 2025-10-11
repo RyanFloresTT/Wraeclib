@@ -1,7 +1,7 @@
 ﻿
 using Wraeclib.Endpoints;
 
-namespace Wraeclib; 
+namespace Wraeclib;
 public class WraeclibClient {
     internal WraeclibClient(HttpClient http) {
         http = http ?? throw new ArgumentNullException(nameof(http));
